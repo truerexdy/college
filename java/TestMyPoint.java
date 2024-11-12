@@ -1,36 +1,49 @@
+//Just because I've added comments doesn't mean that it's written by AI.
+//I'm just trying to be a good/responsible programmer here -_-
+
 class MyPoint{
+    //Instance Variables Declarations
     int x;
     int y;
+
+    //Non-parameterized Constructor, init x,y to 0
     MyPoint(){
         this.x = 0;
         this.y = 0;
     }
+    //Constructor, arguement: x and y co-ordinates
     MyPoint(int x, int y){
         this.x = x;
         this.y = y;
     }
+    //Set x and y values arguement: x and y coords
     void setXY(int x, int y){
         this.x = x;
         this.y = y;
     }
+    //Returns an array containing x and y coords
     int[] getXY(){
         int[] coords = new int[2];
         coords[0]=this.x;
         coords[1]=this.y;
         return coords;
     }
+    //Returns a string representation of the coords
     String ToString(){
         String temp = "X=" + this.x + " Y=" + this.y;
         return temp;
     }
+    //Distance b/w points arguements: coords
     double Distance(int x, int y){
         double d = Math.sqrt((double)(Math.pow(this.x-x,2)+Math.pow(this.y-y,2)));
         return d;
     }
+    //Distance b/w points arguements: instance of MyPoint
     double Distance(MyPoint point){
         double d = Math.sqrt((double)(Math.pow(this.x-point.x,2)+Math.pow(this.y-point.y,2)));
         return d;
     }
+    //Distance from origin
     double Distance(){
         double d = Math.sqrt((double)(Math.pow(this.x,2)+Math.pow(this.y,2)));
         return d;
