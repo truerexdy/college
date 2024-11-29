@@ -57,13 +57,14 @@ node* insertToSortedHead(node* sortedHead, node* newNode){
     return sortedHead;
 }
 
-node* sortList(node* unsortedHead, node* sortedHead){
-    if(!unsortedHead){
+node* sortList(node* head){
+    if(!head){
         cout << "Empty list";
         return nullptr;
     }
     else{
-        node* curr = unsortedHead;
+        node* sortedHead = nullptr;
+        node* curr = head;
         while(curr){
             node* nextNode = curr->next;
             curr->next = nullptr;
@@ -75,8 +76,7 @@ node* sortList(node* unsortedHead, node* sortedHead){
 }
 
 int main(){
-    node* unsortedHead = NULL;
-    node* sortedHead = NULL;
+    node* head = NULL;
 
     int uin = 0;
     while(1){
@@ -87,20 +87,20 @@ int main(){
             cout << "Enter the new node value:\n";
             int temp;
             cin >> temp;
-            unsortedHead = insertAtEnd(unsortedHead, temp);
+            head = insertAtEnd(head, temp);
             break;
         case 2:
-            display(unsortedHead);
+            display(head);
             break;
         case 3:
-            sortedHead = sortList(unsortedHead, sortedHead);
             cout << "Unsorted\n";
-            display(unsortedHead);
+            display(head);
+            head = sortList(head);
             cout << "Sorted\n";
-            display(sortedHead);
+            display(head);
             break;
         case 4:
-            display(sortedHead);
+            display(head);
             break;
         case 5:
             exit(0);
