@@ -21,7 +21,6 @@ node* insertToSortedHead(node* sortedHead, node* newNode){
     return sortedHead;
 }
 
-
 node* createNewNode(int value){
     node* newNode = (node*)malloc(sizeof(node));
     newNode->data = value;
@@ -80,7 +79,7 @@ int main(){
     node* unsortedHead = NULL;
     node* sortedHead = NULL;
 
-    unsortedHead = insertAtEnd(unsortedHead, 9);
+    /*unsortedHead = insertAtEnd(unsortedHead, 9);
     unsortedHead = insertAtEnd(unsortedHead, 2);
     unsortedHead = insertAtEnd(unsortedHead, 7);
     unsortedHead = insertAtEnd(unsortedHead, 13);
@@ -88,6 +87,38 @@ int main(){
     unsortedHead = insertAtEnd(unsortedHead, 69);
     display(unsortedHead);
     sortedHead = sortList(unsortedHead, sortedHead);
-    display(sortedHead);
+    display(sortedHead);*/
+
+    int uin = 0;
+    while(uin!=5){
+        cout << "Choose an option:\n1.Insert to List\n2.Display\n3.Sort\n4.Show Sorted\n5.Exit\n";
+        cin >> uin;
+        switch (uin){
+        case 1:
+            cout << "Enter the new node value:\n";
+            int temp;
+            cin >> temp;
+            unsortedHead = insertAtEnd(unsortedHead, temp);
+            break;
+        case 2:
+            display(unsortedHead);
+            break;
+        case 3:
+            sortedHead = sortList(unsortedHead, sortedHead);
+            cout << "Unsorted\n";
+            display(unsortedHead);
+            cout << "Sorted\n";
+            display(sortedHead);
+            break;
+        case 4:
+            display(sortedHead);
+            break;
+        case 5:
+            exit(0);
+            break;
+        default:
+            break;
+        }
+    }
     return 0;
 }
