@@ -1,4 +1,3 @@
-
 #include <iostream>
 using std::cin, std::cout;
 typedef struct node{
