@@ -36,12 +36,14 @@ public class CurrencyConverter {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         DecimalFormat df = new DecimalFormat("#.##");
+        
         while (true) {
             try {
                 System.out.println("\n--- Currency Converter ---");
                 System.out.println("1. Convert Currency");
                 System.out.println("2. List Supported Currencies");
-                System.out.println("3. Exit");
+                System.out.println("3. Update Exchange Rate");
+                System.out.println("4. Exit");
                 System.out.print("Enter your choice: ");
                 int choice = scanner.nextInt();
                 switch (choice) {
@@ -52,13 +54,24 @@ public class CurrencyConverter {
                         String fromCurrency = scanner.next().toUpperCase();
                         System.out.print("Enter target currency code (e.g., EUR): ");
                         String toCurrency = scanner.next().toUpperCase();
-                        double convertedAmount = convertCurrency(amount, fromCurrency, toCurrency);                        
-                        System.out.println(amount + " " + fromCurrency + " = " + df.format(convertedAmount) + " " + toCurrency);
+                        double convertedAmount = convertCurrency(amount, fromCurrency, toCurrency);
+                        System.out.println("\n"+amount + " " + fromCurrency + " = " + df.format(convertedAmount) + " " + toCurrency);
                         break;
                     case 2:
                         listSupportedCurrencies();
                         break;
                     case 3:
+                        System.out.print("Enter currency code to update (e.g., EUR): ");
+                        String currencyToUpdate = scanner.next().toUpperCase();                        
+                        if (!EXCHANGE_RATES.containsKey(currencyToUpdate)) {
+                            System.out.println("Currency not found. Use option 2 to see supported currencies.");
+                            break;
+                        }
+                        System.out.print("Enter new exchange rate (1 USD = X " + currencyToUpdate + "): ");
+                        double newRate = scanner.nextDouble();
+                        updateExchangeRate(currencyToUpdate, newRate);
+                        break;
+                    case 4:
                         System.out.println("Thank you for using the Currency Converter!");
                         scanner.close();
                         System.exit(0);
