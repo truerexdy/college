@@ -15,8 +15,18 @@ int main(){
 
     printf("Enter the number of blocks:\n");
     scanf("%d", &nblocks);
+    if(nblocks >= MAX){
+        printf("Size too big, please choose less number of blocks\\n");
+    }
     printf("Enter the number of files:\n");
     scanf("%d", &nfiles);
+    if(nfiles >= MAX){
+        printf("Size too big, please choose less number of files\\n");
+    }
+
+    if(nfiles > nblocks){
+        printf("Number of files greater than number of available blocks\n");
+    }
 
     printf("Enter the block sizes:\n");
     for(int i=0; i<nblocks; i++){
