@@ -51,12 +51,13 @@ int main(){
                 }
             }
             else{
+                lowest++;
                 continue;
             }
         }
         if(blocks[lowest]>=files[i]){
             allocation[lowest]=i;
-        fragment[lowest]=blocks[lowest]-files[i];
+            fragment[lowest]=blocks[lowest]-files[i];
         }
     }
 
