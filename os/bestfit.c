@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #define MAX 16
 
 int main(){
@@ -17,15 +18,18 @@ int main(){
     scanf("%d", &nblocks);
     if(nblocks >= MAX){
         printf("Size too big, please choose less number of blocks\\n");
+        exit(0);
     }
     printf("Enter the number of files:\n");
     scanf("%d", &nfiles);
     if(nfiles >= MAX){
         printf("Size too big, please choose less number of files\\n");
+        exit(0);
     }
 
     if(nfiles > nblocks){
         printf("Number of files greater than number of available blocks\n");
+        exit(0);
     }
 
     printf("Enter the block sizes:\n");
@@ -44,15 +48,16 @@ int main(){
             if(allocation[j]==-1){
                 if(blocks[lowest]>blocks[j]&&blocks[j]>=files[i]){
                     lowest = j;
-                    break;
                 }
             }
             else{
                 continue;
             }
         }
-        allocation[lowest]=i;
+        if(blocks[lowest]>=files[i]){
+            allocation[lowest]=i;
         fragment[lowest]=blocks[lowest]-files[i];
+        }
     }
 
     printf("\nFile No:\tFile Size:\tBlock No:\tBlock Size:\tFragment Size:");
